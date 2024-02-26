@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".EntryPageFragment.EntryPageFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/title_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="22sp"
+        android:fontFamily="@font/rajdhani_bold"
+        android:gravity="center"
+        android:padding="10sp"
+        android:text="@string/expense_tracting_app"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/enterTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.443" />
+
+    <TextView
+        android:id="@+id/titleSmall"
+        android:layout_width="193dp"
+        android:layout_height="42dp"
+
+        android:fontFamily="@font/rajdhani_bold"
+        android:gravity="center"
+        android:padding="8sp"
+
+        android:text="@string/using_room_library"
+        android:textColor="@color/black"
+        android:textSize="21sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/enterTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.766"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_1"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="TextSizeCheck" />
+
+    <EditText
+        android:id="@+id/enterTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="35sp"
+        android:ems="10"
+        android:fontFamily="@font/rajdhani_medium"
+        android:gravity="center"
+        android:hint="@string/enter_title"
+        android:importantForAutofill="no"
+        android:inputType="textCapSentences"
+        android:minHeight="48dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textColorHint="#E10808"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.335"
+        />
+
+    <EditText
+        android:id="@+id/enterAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="35sp"
+        android:ems="10"
+        android:fontFamily="@font/rajdhani_regular"
+        android:gravity="center"
+        android:hint="@string/enter_amount"
+        android:importantForAutofill="no"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:textColor="@color/black"
+        android:textColorHint="#E10808"
+        android:textSize="20.5sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterTitle"
+        app:layout_constraintVertical_bias="0.125"
+        />
+
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="30sp"
+
+        android:fontFamily="@font/rajdhani_semi_bold"
+        android:shadowColor="#FBC02D"
+        android:text="@string/add"
+        android:textSize="30sp"
+        app:cornerRadius="25sp"
+        android:paddingHorizontal="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.658"
+        />
+
+    <Button
+        android:id="@+id/btnRecyclerView"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:elevation="20sp"
+        android:fontFamily="@font/rajdhani_semi_bold"
+        android:padding="10sp"
+        android:text="@string/go_to_list"
+        android:textColorHighlight="#EA5353"
+        android:textColorLink="#D12626"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.809" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rajdhani_semi_bold"
+        android:padding="10sp"
+        android:text="@string/delete_last_entry"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.915" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
