@@ -17,13 +17,12 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         if(position == 0)
             return new EntryPageFragment();
-        else if (position == 1)
-            return new RecyclerViewFragment();
+
         else
-            return new EntryPageFragment();
+            return new RecyclerViewFragment();
     }
     @Override
     public int getItemCount() {  //Give the number of tabs in the activity
-        return 3;
+        return 2;
     }
 }
