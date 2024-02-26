@@ -68,6 +68,13 @@ public class RecyclerExpenseAdapter extends RecyclerView.Adapter<RecyclerExpense
         return expenseModelArrayList.size();
     }
 
+
+        public void updateData(ArrayList<ExpenseModel> newData) {
+            expenseModelArrayList.clear();
+            expenseModelArrayList.addAll(newData);
+            notifyDataSetChanged();
+        }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView txtTitle, txtAmount;
         public ViewHolder(@NonNull View itemView) {
