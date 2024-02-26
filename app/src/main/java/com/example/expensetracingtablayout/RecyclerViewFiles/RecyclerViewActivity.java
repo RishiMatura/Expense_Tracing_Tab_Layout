@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.expensetracingtablayout.R;
 import com.example.expensetracingtablayout.RoomDatabase.DatabaseHelper;
 import com.example.expensetracingtablayout.RoomDatabase.Expense;
 

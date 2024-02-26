@@ -1,66 +1,98 @@
 package com.example.expensetracingtablayout.EntryPageFragment;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.expensetracingtablayout.R;
+import com.example.expensetracingtablayout.RecyclerViewFiles.RecyclerViewActivity;
+import com.example.expensetracingtablayout.RoomDatabase.DatabaseHelper;
+import com.example.expensetracingtablayout.RoomDatabase.Expense;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link EntryPageFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class EntryPageFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    EditText edTitle, edAmount;
+    Button btnAdd, btnRecyclerView;
+    Button btnDelete;
+    private List<Expense> allExpenses;
+    private ConstraintLayout constraintLayout;
+    private DatabaseHelper databaseHelper;
 
     public EntryPageFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment EntryPageFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static EntryPageFragment newInstance(String param1, String param2) {
-        EntryPageFragment fragment = new EntryPageFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    @SuppressLint("ClickableViewAccessibility")
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_entry_page, container, false);
+        View view = inflater.inflate(R.layout.fragment_entry_page, container, false);
+
+        // Initialize databaseHelper
+        databaseHelper = DatabaseHelper.getDB(getContext());
+
+        edTitle = view.findViewById(R.id.enterTitle);
+        edAmount = view.findViewById(R.id.enterAmount);
+        btnAdd = view.findViewById(R.id.addButton);
+        btnRecyclerView = view.findViewById(R.id.btnRecyclerView);
+        btnDelete = view.findViewById(R.id.btnDelete);
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String title = edTitle.getText().toString();
+                String amount = edAmount.getText().toString();
+                databaseHelper.expenseDAO().addTx(new Expense(title, amount));
+                Toast.makeText(getContext(), "Added", Toast.LENGTH_SHORT).show();
+
+                ArrayList<Expense> arrExpense = (ArrayList<Expense>) databaseHelper.expenseDAO().getAllExpense();
+                for (int i = 0; i < arrExpense.size(); i++) {
+                    Log.d("Data", "Title " + arrExpense.get(i).getTitle() + " Amount " + arrExpense.get(i).getAmount());
+                }
+
+                edTitle.setText("");
+                edAmount.setText("");
+            }
+        });
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                allExpenses = databaseHelper.expenseDAO().getAllExpense();
+                if (!allExpenses.isEmpty()) {
+                    databaseHelper.expenseDAO().deleteLastTx();
+                    Toast.makeText(getContext(), "Removed", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Handle case where there are no expenses to delete
+                    Toast.makeText(getContext(), "No expenses to delete", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        btnRecyclerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), RecyclerViewActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        return view;
     }
 }
