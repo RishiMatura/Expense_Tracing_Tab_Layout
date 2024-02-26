@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.example.expensetracingtablayout.RecyclerViewFragment;
+
 public class ViewPagerAdapter extends FragmentStateAdapter {
     public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
@@ -16,7 +18,7 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
         if(position == 0)
             return new EntryPageFragment();
         else if (position == 1)
-            return new EntryPageFragment();
+            return new RecyclerViewFragment();
         else
             return new EntryPageFragment();
     }
