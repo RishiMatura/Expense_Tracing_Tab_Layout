@@ -12,10 +12,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.expensetracingtablayout.R;
-import com.example.expensetracingtablayout.RecyclerViewFiles.ExpenseModel;
 import com.example.expensetracingtablayout.RecyclerViewFiles.RecyclerExpenseAdapter;
 import com.example.expensetracingtablayout.RoomDatabase.DatabaseHelper;
 import com.example.expensetracingtablayout.RoomDatabase.Expense;
+import com.example.expensetracingtablayout.RoomDatabase.ExpenseDAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,14 +51,10 @@ public class RecyclerViewFragment extends Fragment {
 
     public void getRoomData() {
         DatabaseHelper databaseHelper = DatabaseHelper.getDB(getContext());
-        List<Expense> arrExpense = databaseHelper.expenseDAO().getAllExpense();
-        ArrayList<ExpenseModel> expenseModelArrayList = new ArrayList<>();
+        List<Expense> expenseList = databaseHelper.expenseDAO().getAllExpense();
 
-        for (Expense expense : arrExpense) {
-            expenseModelArrayList.add(new ExpenseModel(expense.getTitle(), expense.getAmount()));
-        }
 
-        if (expenseModelArrayList.isEmpty()) {
+        if (expenseList.isEmpty()) {
             // Dataset is empty, show the empty message
             emptyMessageTextView.setVisibility(View.VISIBLE);
             recyclerView.setVisibility(View.GONE); // Hide the RecyclerView
@@ -67,7 +63,7 @@ public class RecyclerViewFragment extends Fragment {
             emptyMessageTextView.setVisibility(View.GONE);
             recyclerView.setVisibility(View.VISIBLE); // Show the RecyclerView
 
-            RecyclerExpenseAdapter adapter = new RecyclerExpenseAdapter(getContext(), expenseModelArrayList);
+            RecyclerExpenseAdapter adapter = new RecyclerExpenseAdapter(getContext(), expenseList);
             recyclerView.setAdapter(adapter);
         }
     }

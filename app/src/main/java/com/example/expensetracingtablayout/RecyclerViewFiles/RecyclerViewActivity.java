@@ -73,7 +73,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
 //            METHOD 1
 
-        ArrayList<ExpenseModel> expenseModelArrayList = new ArrayList<>();
+/*        ArrayList<ExpenseModel> expenseModelArrayList = new ArrayList<>();
         List<Expense> arrExpense = databaseHelper.expenseDAO().getAllExpense();
 
         if (arrExpense.isEmpty()) {
@@ -90,6 +90,9 @@ public class RecyclerViewActivity extends AppCompatActivity {
             recyclerView.setAdapter(adapter);
         }
 
+
+ */
+
 //        for (Expense expense : arrExpense) {
 //            expenseModelArrayList.add(new ExpenseModel(expense.getTitle(), expense.getAmount()));
 //        }
@@ -102,9 +105,9 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
 //            METHOD 2
 
-//            List<Expense> arrExpense = databaseHelper.expenseDAO().getAllExpense();
-//            RecyclerExpenseAdapter adapter = new RecyclerExpenseAdapter(this, arrExpense);
-//            recyclerView.setAdapter(adapter);
+            List<Expense> arrExpense = databaseHelper.expenseDAO().getAllExpense();
+            RecyclerExpenseAdapter adapter = new RecyclerExpenseAdapter(this, arrExpense);
+            recyclerView.setAdapter(adapter);
 
 
 
