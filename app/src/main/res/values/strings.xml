@@ -101,4 +101,8 @@
     <string name="enter_amount">Enter Amount</string>
     <string name="add">ADD</string>
     <string name="no_expenses_found">No expenses found</string>
+    <string name="update_title">Update Title</string>
+    <string name="update_record">Update Record</string>
+    <string name="update_amount">Update Amount</string>
+    <string name="update_entry">Update Entry</string>
 </resources>
