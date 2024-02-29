@@ -21,12 +21,6 @@ public interface ExpenseDAO {
     @Query("DELETE FROM Expense WHERE id = (SELECT MAX(id) FROM Expense)")
     void deleteLastTx();
 
-    class ExpenseModel {
-        protected String title, amount;
 
-        public ExpenseModel(String title, String amount) {
-            this.title = title;
-            this.amount = amount;
-        }
-    }
+
 }
