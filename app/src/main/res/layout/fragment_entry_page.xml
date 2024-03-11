@@ -117,7 +117,7 @@
 
     <Button
         android:id="@+id/btnRecyclerView"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="20sp"
         android:fontFamily="@font/rajdhani_semi_bold"
@@ -135,7 +135,7 @@
 
     <Button
         android:id="@+id/btnDelete"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/rajdhani_semi_bold"
         android:padding="10sp"
