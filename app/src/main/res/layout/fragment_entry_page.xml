@@ -15,7 +15,7 @@
         android:fontFamily="@font/rajdhani_bold"
         android:gravity="center"
         android:padding="10sp"
-        android:text="@string/expense_tracting_app"
+        android:text="@string/expense_tracking_app"
         android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold|italic"
