@@ -6,7 +6,7 @@ Expense Tracing App is an Android application designed to assist users in tracki
 
 ## Screenshot:
 
-![App Screenshot](AppScreenShot1.png)
+<img src="AppScreenShot1.png" alt="App Screenshot" width="300">
 
 
 
