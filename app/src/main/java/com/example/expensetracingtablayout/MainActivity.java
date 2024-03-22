@@ -34,6 +34,15 @@ public class MainActivity extends AppCompatActivity {
             }
         }).attach();
 
+/* Another method to implement TabLayoutMediator
+        new TabLayoutMediator(tabLayout, viewPager,
+                new TabLayoutMediator.TabConfigurationStrategy() {
+                    @Override public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                        tab.setText("Tab " + (position + 1));
+                    }
+                }).attach();
+*/
+        
 
     }
 
