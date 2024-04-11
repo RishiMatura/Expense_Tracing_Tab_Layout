@@ -106,9 +106,16 @@ public class RecyclerViewActivity extends AppCompatActivity {
 //            METHOD 2
 
             List<Expense> arrExpense = databaseHelper.expenseDAO().getAllExpense();
+        if (arrExpense.isEmpty()) {
+            // Dataset is empty, show the empty message
+            emptyMessageTextView.setVisibility(View.VISIBLE);
+        } else {
+            // Dataset is not empty, hide the empty message
+            emptyMessageTextView.setVisibility(View.GONE);
+
             RecyclerExpenseAdapter adapter = new RecyclerExpenseAdapter(this, arrExpense);
             recyclerView.setAdapter(adapter);
-
+        }
 
 
 
